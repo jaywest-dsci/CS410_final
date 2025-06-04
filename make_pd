@@ -1,0 +1,19 @@
+import numpy as np
+import gudhi as gd
+from PIL import Image
+import matplotlib.pyplot as plt
+
+img = Image.open('/Users/jakobrode/Desktop/EC 320/CS410_final/dataset/bugs_bunny/image_1.jpg').convert('L') #put yout file path
+img_array = np.array(img, dtype=np.float64)
+cc = gd.CubicalComplex(top_dimensional_cells=img_array)
+diag = cc.persistence()
+
+gd.plot_persistence_diagram(diag)
+plt.xlabel("Birth")
+plt.ylabel("Death")
+plt.title("Persistence Diagram")
+plt.show()
+
+filtration = cc.filtration()
+for cube_vertices, filt_val in filtration:
+    print(f"Cube vertices: {cube_vertices} → filtration value: {filt_val}")
