@@ -108,8 +108,24 @@ The results are quite impressive. The TDA-based method effectively differentiate
 
 This approach is computationally efficient as we are just taking small samples of the large dataset, requires significantly fewer labeled samples compared to deep learning methods and the method's deterministic nature allows for predictable behavior and understanding of failure modes. The study clearly shows the power of persistent homology in extracting textural differecnes in sattelite imaging. 
 
-\section{Another Example/Summary}
-\newpage
+
+
+\section{TDA in neural circuits case study}
+	In this section we will look at another use case of persistent homology in modeling connections in the brain. We summarize the techniques used and findings of Di Liang, Shengxiang Xia, Xianfu Zhang, and Weiwei Zhang in "Analysis of Brain Functional Connectivity Neural Circuits in Children With Autism Based on Persistent Homology." Autism spectrum disorder (ASD) is a complex neurodevelopmental disorder, with unclear pathogenesis, or the mechanisms which cause ASD. New methods are emerging to classify physical differences in the brain of people with ASD and without. The researchers in this paper used resting-state functional magnetic resonance imaging (fMRI) along with construction of Vietoris-Rips filtrations to analyze the difference in the number of FC neural circuits of different length ranges between people with ASD and without. \\
+
+	To do this, they first extracted fMRI time series for 90 brain regions, using the AAL atlas. Functional connectivity between each pair of regions in the brain were then quantified using the pearson correlation coefficient, resulting in a symmetric correlation matrix for each subject. The distance metric $d(P_i,P_j) = \sqrt{1-\text{corr}(P_i,P_j)} $ was defined using the correlation coefficient to determine the distance between vertices in the brain functional network. \\
+
+	For each subject's FC matrix, a VR-complex filtration was built by varying the threshold parameter based on the distances in the correlation matrix. This results in the VR-filtration model of the brain network:
+	\[
+	\text{VR}(X,\ep_1) \subset \text{VR}(X,\ep_2) \subset  \ldots
+	.\] 
+Using JavaPlex, they then calculated the persistence barcodes and 0 and 1 dimensional Betti numbers. These can be interpreted to be the number of connected components of the brain network, and the number of functional circuits in the brain network, respectively. \\
+
+To analyze the results from the filtrations, persistence barcodes across thresholds 0.7,0.8, and 0.9 were used to count the number of FC neural circuits of different lenghts in the typical vs ASD individuals. Then statistical comparisons using the Mann-Whitney U-test wer applied to the length ranges of 4-7, 8-12, and 13-16. They found that the number of circuits of length 8-12 was significantly lower in ASD children, while no significant difference was found for very short or long circuits. Also, when the threshold is 0.7, the ASD group had 7 connected components, while in the TD control, all brain regions were connected, forming 1 component. \\
+
+These results gained from the techniques learned from persistent homology give us important insights into the connections between brain regions in people with ASD, and help model the features of the brain which may influence its functions. 
+
+
 
 
 \section{Cartoon Characters and TDA}
