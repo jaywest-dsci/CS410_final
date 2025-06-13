@@ -30,6 +30,7 @@ Topological Data Analysis provides us with tools to study the "shape" of data by
   - "numpy", "matplotlib" – standard Python data stack
  
 - **Steps**:
+    - gathered 200 labeled images from the internet for model data
     - Images are converted to grayscale and downsampled to 50x50.
     - Persistence landscapes are computed for each image.
     - Labels are encoded and the dataset is split into test sets.
